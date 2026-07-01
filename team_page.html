@@ -1,0 +1,554 @@
+﻿<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Team | PUCC - Premier University Computer Club</title>
+<meta content="Meet the leaders and advisors of Premier University Computer Club (PUCC) - Advisory Board, Executive Committee, and team members driving innovation." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          ink: "#111827",
+          muted: "#5f6472",
+          cloud: "#f7f9fc",
+          line: "#dfe4ee",
+          primary: "#3525cd",
+          primarySoft: "#ebe9ff",
+          cyan: "#06b6d4",
+          mint: "#14b8a6",
+          amber: "#f59e0b",
+          rose: "#e11d48",
+          navy: "#101828"
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem",
+          lg: "0.5rem",
+          xl: "0.75rem",
+          full: "9999px"
+        },
+        spacing: {
+          containerMax: "1200px",
+          marginMobile: "20px",
+          gutter: "24px",
+          sectionMobile: "72px",
+          sectionDesktop: "120px"
+        },
+        fontFamily: {
+          heading: ["Sora", "sans-serif"],
+          body: ["Manrope", "sans-serif"]
+        },
+        boxShadow: {
+          glow: "0 24px 70px rgba(53, 37, 205, .18)",
+          card: "0 18px 45px rgba(17, 24, 39, .08)"
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  }
+
+  body {
+    font-family: "Manrope", sans-serif;
+    background: #ffffff;
+    color: #111827;
+  }
+
+  .brand-logo {
+    height: 76px;
+    width: 76px;
+    object-fit: contain;
+  }
+
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    background: #3525cd;
+    bottom: -8px;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+    width: 100%;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    transform: scaleX(1);
+  }
+
+  .page-hero {
+    background:
+      radial-gradient(circle at 16% 22%, rgba(6, 182, 212, .16), transparent 28%),
+      radial-gradient(circle at 84% 12%, rgba(245, 158, 11, .17), transparent 26%),
+      linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #edf7ff 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #3525cd, #06b6d4, #14b8a6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .75s ease, transform .75s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .advisor-card {
+    background: #ffffff;
+    border: 1px solid #dfe4ee;
+    border-radius: 1.25rem;
+    padding: 2rem;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(108, 99, 255, 0.06);
+  }
+
+  .advisor-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3525cd, #8B83FF, #3525cd);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .advisor-card:hover::before {
+    opacity: 1;
+  }
+
+  .advisor-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 48px rgba(108, 99, 255, 0.15);
+    border-color: #3525cd40;
+  }
+
+  .advisor-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3525cd, #8B83FF);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .advisor-card:hover .advisor-avatar {
+    transform: scale(1.05);
+    box-shadow: 0 0 32px rgba(108, 99, 255, 0.3);
+  }
+
+  .ec-card {
+    background: #ffffff;
+    border: 1px solid #dfe4ee;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ec-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 48px rgba(26, 26, 26, 0.08);
+    border-color: #3525cd30;
+  }
+
+  .ec-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #dfe4ee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #5f6472;
+    margin-bottom: 0.75rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .ec-card:hover .ec-avatar {
+    transform: scale(1.05);
+    background: #3525cd;
+    color: #ffffff;
+  }
+
+  .badge-advisor {
+    background: #3525cd20;
+    color: #3525cd;
+    font-weight: 700;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid #3525cd30;
+  }
+
+  .badge-executive {
+    background: #F0F0F0;
+    color: #5f6472;
+    font-weight: 600;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.7rem;
+    border-radius: 9999px;
+  }
+
+  .advisor-section {
+    background: linear-gradient(180deg, #f7f9fc 0%, #ffffff 50%, #f7f9fc 100%);
+    border-top: 1px solid #dfe4ee;
+    border-bottom: 1px solid #dfe4ee;
+  }
+
+  .org-node {
+    padding: 0.75rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-align: center;
+    min-width: 180px;
+  }
+
+  .org-node.advisor-node {
+    background: #3525cd;
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(108, 99, 255, 0.25);
+  }
+
+  .org-node.exec-node {
+    background: #111827;
+    color: #ffffff;
+  }
+
+  .org-node.wing-node {
+    background: #dfe4ee;
+    color: #5f6472;
+  }
+
+  .org-arrow {
+    color: #5f6472;
+    font-size: 1.5rem;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 768px) {
+    .brand-logo {
+      height: 60px;
+      width: 60px;
+    }
+    .advisor-card {
+      padding: 1.5rem;
+      min-height: auto;
+    }
+    .advisor-avatar {
+      width: 64px;
+      height: 64px;
+      font-size: 1.4rem;
+    }
+    .ec-card {
+      padding: 1.25rem;
+      min-height: auto;
+    }
+    .ec-avatar {
+      width: 56px;
+      height: 56px;
+      font-size: 1.2rem;
+    }
+    .org-node {
+      min-width: 140px;
+      font-size: 0.8rem;
+      padding: 0.6rem 1.5rem;
+    }
+  }
+</style>
+</head>
+<body class="font-body text-ink">
+
+<!-- ========== NAVIGATION ========== -->
+<header class="fixed top-0 z-50 w-full border-b border-line/80 bg-white/90 backdrop-blur-xl">
+  <nav class="mx-auto flex h-20 max-w-containerMax items-center justify-between px-marginMobile md:px-gutter">
+    <a class="flex items-center" href="index.html" aria-label="PUCC home">
+      <img class="brand-logo" src="logos/computerclublogo.jpeg" alt="Premier University Computer Club logo"/>
+    </a>
+
+    <div class="hidden items-center gap-8 text-sm font-bold text-muted md:flex">
+      <a class="nav-link hover:text-primary" href="index.html">Home</a>
+      <a class="nav-link hover:text-primary" href="about.html">About</a>
+      <a class="nav-link hover:text-primary" href="wingsPage.html">Wings</a>
+      <a class="nav-link hover:text-primary" href="event_page.html">Events</a>
+      <a class="nav-link hover:text-primary" href="achievement.html">Achievements</a>
+      <a class="nav-link active text-primary" href="team_page.html">Team</a>
+      <a class="rounded-lg bg-primary px-5 py-3 text-white shadow-glow transition hover:-translate-y-0.5" href="join_us.html">Join Us</a>
+    </div>
+
+    <button class="grid h-11 w-11 place-items-center rounded-lg border border-line text-ink md:hidden" onclick="toggleMenu()" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </nav>
+
+  <div class="hidden w-full flex-col gap-5 border-t border-line bg-white px-marginMobile py-7 text-base font-bold shadow-card md:hidden" id="mobile-menu">
+    <a class="text-muted" href="index.html" onclick="toggleMenu()">Home</a>
+    <a class="text-muted" href="about.html" onclick="toggleMenu()">About</a>
+    <a class="text-muted" href="wingsPage.html" onclick="toggleMenu()">Wings</a>
+    <a class="text-muted" href="event_page.html" onclick="toggleMenu()">Events</a>
+    <a class="text-muted" href="achievement.html" onclick="toggleMenu()">Achievements</a>
+    <a class="text-primary" href="team_page.html" onclick="toggleMenu()">Team</a>
+    <a class="rounded-lg bg-primary px-5 py-3 text-center text-white" href="join_us.html" onclick="toggleMenu()">Join Us</a>
+  </div>
+</header>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main>
+  <section class="page-hero overflow-hidden pt-20">
+    <div class="mx-auto max-w-containerMax px-marginMobile py-sectionMobile text-center md:px-gutter md:py-sectionDesktop">
+      <div class="reveal mx-auto max-w-4xl">
+        <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/75 px-4 py-2 text-sm font-extrabold uppercase tracking-[.2em] text-primary shadow-card">
+          <span class="material-symbols-outlined text-[18px]">groups</span>
+          Our Team
+        </p>
+        <h1 class="font-heading text-5xl font-extrabold leading-tight md:text-7xl">Team <span class="gradient-text">PUCC</span></h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">Meet the leaders and mentors guiding PUCC's mission to build the next generation of tech innovators.</p>
+        <div class="mx-auto mt-10 h-1 w-28 rounded-full bg-gradient-to-r from-primary via-cyan to-mint"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advisory Board -->
+  <section class="advisor-section py-sectionMobile md:py-sectionDesktop">
+    <div class="mx-auto max-w-containerMax px-marginMobile md:px-gutter">
+      <div class="text-center mb-12">
+        <span class="badge-advisor inline-block mb-3">✦ Senior Authority</span>
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">Advisory Board</h2>
+        <p class="text-muted text-lg mt-2 max-w-2xl mx-auto">Our distinguished advisors providing strategic guidance and industry expertise.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div class="advisor-card reveal">
+          <div class="advisor-avatar">AK</div>
+          <h3 class="font-extrabold text-xl text-ink mt-2">Professor Abdur Rahman</h3>
+          <p class="font-semibold text-primary text-sm">Chief Advisor, PUCC</p>
+          <p class="text-muted text-sm leading-relaxed mt-3">20+ years in Computer Science education. Former Head of CSE at Premier University.</p>
+          <span class="badge-advisor mt-4">Advisory Board</span>
+        </div>
+        <div class="advisor-card reveal">
+          <div class="advisor-avatar">SM</div>
+          <h3 class="font-extrabold text-xl text-ink mt-2">Dr. Sharmin Akhter</h3>
+          <p class="font-semibold text-primary text-sm">Technical Advisor</p>
+          <p class="text-muted text-sm leading-relaxed mt-3">PhD in AI from MIT. Specializes in machine learning and neural networks.</p>
+          <span class="badge-advisor mt-4">Advisory Board</span>
+        </div>
+        <div class="advisor-card reveal">
+          <div class="advisor-avatar">MR</div>
+          <h3 class="font-extrabold text-xl text-ink mt-2">Md. Rafiqul Islam</h3>
+          <p class="font-semibold text-primary text-sm">Industry Advisor</p>
+          <p class="text-muted text-sm leading-relaxed mt-3">Senior Software Engineer at Google. 15+ years in software development and system architecture.</p>
+          <span class="badge-advisor mt-4">Advisory Board</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Committee -->
+  <section class="bg-cloud py-sectionMobile md:py-sectionDesktop">
+    <div class="mx-auto max-w-containerMax px-marginMobile md:px-gutter">
+      <div class="text-center mb-12">
+        <span class="badge-executive inline-block mb-3">✦ Operational Team</span>
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">Executive Committee</h2>
+        <p class="text-muted text-lg mt-2 max-w-2xl mx-auto">The dedicated team leading PUCC's day-to-day operations and community initiatives.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <div class="ec-card reveal">
+          <div class="ec-avatar">AH</div>
+          <h3 class="font-extrabold text-lg text-ink">Ahmed Hasan</h3>
+          <p class="font-semibold text-primary text-sm">President</p>
+          <p class="text-muted text-sm mt-1">Competitive Programming</p>
+          <span class="badge-executive mt-3">Executive Committee</span>
+        </div>
+        <div class="ec-card reveal">
+          <div class="ec-avatar">NF</div>
+          <h3 class="font-extrabold text-lg text-ink">Nadia Ferdous</h3>
+          <p class="font-semibold text-primary text-sm">Vice President</p>
+          <p class="text-muted text-sm mt-1">Software Engineering</p>
+          <span class="badge-executive mt-3">Executive Committee</span>
+        </div>
+        <div class="ec-card reveal">
+          <div class="ec-avatar">RA</div>
+          <h3 class="font-extrabold text-lg text-ink">Rafiul Alam</h3>
+          <p class="font-semibold text-primary text-sm">General Secretary</p>
+          <p class="text-muted text-sm mt-1">Linux-Based Networking</p>
+          <span class="badge-executive mt-3">Executive Committee</span>
+        </div>
+        <div class="ec-card reveal">
+          <div class="ec-avatar">ST</div>
+          <h3 class="font-extrabold text-lg text-ink">Sabrina Tasnim</h3>
+          <p class="font-semibold text-primary text-sm">Treasurer</p>
+          <p class="text-muted text-sm mt-1">Deep Neural Research</p>
+          <span class="badge-executive mt-3">Executive Committee</span>
+        </div>
+        <div class="ec-card reveal">
+          <div class="ec-avatar">MI</div>
+          <h3 class="font-extrabold text-lg text-ink">Minhaj Islam</h3>
+          <p class="font-semibold text-primary text-sm">Event Coordinator</p>
+          <p class="text-muted text-sm mt-1">Research &amp; Development</p>
+          <span class="badge-executive mt-3">Executive Committee</span>
+        </div>
+        <div class="ec-card reveal">
+          <div class="ec-avatar">FR</div>
+          <h3 class="font-extrabold text-lg text-ink">Fariha Rahman</h3>
+          <p class="font-semibold text-primary text-sm">PR &amp; Communications Lead</p>
+          <p class="text-muted text-sm mt-1">Career Guidance</p>
+          <span class="badge-executive mt-3">Executive Committee</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organizational Structure -->
+  <section class="bg-white py-sectionMobile md:py-sectionDesktop border-y border-line">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">Organizational Structure</h2>
+        <p class="text-muted text-lg mt-2">Our leadership hierarchy from guidance to operations</p>
+      </div>
+      <div class="flex flex-col items-center gap-2">
+        <div class="org-node advisor-node"><span class="material-symbols-outlined text-sm mr-2" style="font-size:1rem;">shield</span> Advisory Board</div>
+        <div class="org-arrow">↓</div>
+        <div class="org-node exec-node"><span class="material-symbols-outlined text-sm mr-2" style="font-size:1rem;">groups</span> Executive Committee</div>
+        <div class="org-arrow">↓</div>
+        <div class="org-node wing-node"><span class="material-symbols-outlined text-sm mr-2" style="font-size:1rem;">hub</span> Wing Leaders &amp; Members</div>
+      </div>
+      <div class="mt-8 text-center text-muted text-sm">
+        <span class="inline-block px-4 py-2 bg-cloud rounded-full border border-line">Strategic Guidance → Operational Leadership → Community Execution</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative overflow-hidden bg-navy py-sectionMobile text-white md:py-sectionDesktop">
+    <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-cyan to-amber"></div>
+    <div class="reveal mx-auto max-w-4xl px-marginMobile text-center">
+      <span class="material-symbols-outlined text-cyan text-[64px]">rocket_launch</span>
+      <h2 class="mt-6 font-heading text-4xl font-extrabold leading-tight md:text-6xl">Join Our Team</h2>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">Passionate about tech and leadership? We're always looking for dedicated members to join our team.</p>
+      <div class="mt-10 flex flex-col items-center gap-5">
+        <a class="inline-flex items-center gap-2 rounded-lg bg-white px-9 py-4 font-extrabold text-primary shadow-glow transition hover:-translate-y-1" href="join_us.html">
+          Apply Now
+          <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-[#0b1020] py-16 text-white">
+  <div class="mx-auto grid max-w-containerMax gap-12 px-marginMobile md:grid-cols-4 md:px-gutter">
+    <div>
+      <div class="flex items-center gap-3">
+        <img class="h-12 w-12 object-contain" src="logos/computerclublogo.jpeg" alt="PUCC logo"/>
+        <div>
+          <p class="font-heading text-xl font-extrabold">PUCC</p>
+          <p class="text-sm font-semibold text-white/60">Premier University Computer Club</p>
+        </div>
+      </div>
+      <p class="mt-6 max-w-sm leading-7 text-white/60">Empowering the next generation of technologists through collaboration, competition, and practical learning.</p>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Quick Links</h3>
+      <ul class="mt-5 grid gap-3 text-white/65">
+        <li><a class="transition hover:text-white" href="index.html">Home</a></li>
+        <li><a class="transition hover:text-white" href="about.html">About</a></li>
+        <li><a class="transition hover:text-white" href="wingsPage.html">Wings</a></li>
+        <li><a class="transition hover:text-white" href="event_page.html">Events</a></li>
+        <li><a class="transition hover:text-white" href="achievement.html">Achievements</a></li>
+        <li><a class="transition hover:text-white" href="team_page.html">Team</a></li>
+        <li><a class="transition hover:text-white" href="join_us.html">Join Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Connect</h3>
+      <div class="mt-5 grid gap-4 text-white/65">
+        <p class="flex gap-3"><span class="material-symbols-outlined text-[20px]">mail</span> pucc.official@pu.ac.bd</p>
+        <div class="flex gap-3">
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="Facebook"><span class="material-symbols-outlined">public</span></a>
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="LinkedIn"><span class="material-symbols-outlined">work</span></a>
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="YouTube"><span class="material-symbols-outlined">smart_display</span></a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Location</h3>
+      <p class="mt-5 text-white/65 flex gap-3"><span class="material-symbols-outlined text-[20px]">location_on</span> Premier University, Chittagong</p>
+      <p class="mt-4 text-sm font-semibold text-white/50">&copy; 2026 PUCC. All rights reserved.</p>
+      <p class="text-sm font-semibold text-white/50">1 July 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("flex");
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, { threshold: 0.14 });
+
+  document.querySelectorAll(".reveal").forEach((el, index) => {
+    el.style.transitionDelay = `${Math.min(index % 3, 2) * 90}ms`;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

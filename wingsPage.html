@@ -1,0 +1,421 @@
+﻿<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PUCC Wings | Premier University Computer Club</title>
+<meta content="Explore the six specialized wings of Premier University Computer Club." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: "#111827",
+          muted: "#5f6472",
+          cloud: "#f7f9fc",
+          line: "#dfe4ee",
+          primary: "#3525cd",
+          primarySoft: "#ebe9ff",
+          cyan: "#06b6d4",
+          mint: "#14b8a6",
+          amber: "#f59e0b",
+          rose: "#e11d48",
+          navy: "#101828"
+        },
+        spacing: {
+          containerMax: "1200px",
+          marginMobile: "20px",
+          gutter: "24px",
+          sectionMobile: "72px",
+          sectionDesktop: "120px"
+        },
+        fontFamily: {
+          heading: ["Sora", "sans-serif"],
+          body: ["Manrope", "sans-serif"]
+        },
+        boxShadow: {
+          glow: "0 24px 70px rgba(53, 37, 205, .18)",
+          card: "0 18px 45px rgba(17, 24, 39, .08)"
+        }
+      }
+    }
+  };
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  }
+  body {
+    background: #ffffff;
+    color: #111827;
+    font-family: "Manrope", sans-serif;
+  }
+  .brand-logo {
+    height: 76px;
+    object-fit: contain;
+    width: 76px;
+  }
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    background: #3525cd;
+    bottom: -8px;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+    width: 100%;
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    transform: scaleX(1);
+  }
+  .page-hero {
+    background:
+      radial-gradient(circle at 16% 22%, rgba(6, 182, 212, .16), transparent 28%),
+      radial-gradient(circle at 84% 12%, rgba(245, 158, 11, .17), transparent 26%),
+      linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #edf7ff 100%);
+  }
+  .gradient-text {
+    background: linear-gradient(90deg, #3525cd, #06b6d4, #14b8a6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .75s ease, transform .75s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .wing-detail-card,
+  .benefit-card,
+  .quick-wing {
+    border: 1px solid #dfe4ee;
+    overflow: hidden;
+    position: relative;
+  }
+  .wing-detail-card::after,
+  .benefit-card::after {
+    border: 1px solid currentColor;
+    border-radius: 9999px;
+    content: "";
+    height: 168px;
+    opacity: .12;
+    position: absolute;
+    right: -62px;
+    top: -62px;
+    width: 168px;
+  }
+  .wing-icon {
+    transition: transform .35s ease;
+  }
+  .wing-detail-card:hover .wing-icon,
+  .benefit-card:hover .wing-icon,
+  .quick-wing:hover .wing-icon {
+    transform: scale(1.12);
+  }
+  .activity-item {
+    align-items: flex-start;
+    display: flex;
+    gap: 12px;
+  }
+  .activity-item::before {
+    background: currentColor;
+    border-radius: 9999px;
+    box-shadow: 0 0 0 5px rgba(53, 37, 205, .08);
+    content: "";
+    flex: 0 0 auto;
+    height: 9px;
+    margin-top: 9px;
+    width: 9px;
+  }
+  @media (max-width: 640px) {
+    .brand-logo {
+      height: 60px;
+      width: 60px;
+    }
+  }
+</style>
+</head>
+<body class="font-body text-ink">
+
+<!-- ========== NAVIGATION ========== -->
+<header class="fixed top-0 z-50 w-full border-b border-line/80 bg-white/90 backdrop-blur-xl">
+  <nav class="mx-auto flex h-20 max-w-containerMax items-center justify-between px-marginMobile md:px-gutter">
+    <a class="flex items-center" href="index.html" aria-label="PUCC home">
+      <img class="brand-logo shrink-0" src="logos/computerclublogo.jpeg" alt="Premier University Computer Club logo"/>
+    </a>
+    <div class="hidden items-center gap-8 text-sm font-bold text-muted md:flex">
+      <a class="nav-link hover:text-primary" href="index.html">Home</a>
+      <a class="nav-link hover:text-primary" href="about.html">About</a>
+      <a class="nav-link active text-primary" href="wingsPage.html">Wings</a>
+      <a class="nav-link hover:text-primary" href="event_page.html">Events</a>
+      <a class="nav-link hover:text-primary" href="achievement.html">Achievements</a>
+      <a class="nav-link hover:text-primary" href="team_page.html">Team</a>
+      <a class="rounded-lg bg-primary px-5 py-3 text-white shadow-glow transition hover:-translate-y-0.5" href="join_us.html">Join Us</a>
+    </div>
+    <button class="grid h-11 w-11 place-items-center rounded-lg border border-line text-ink md:hidden" onclick="toggleMenu()" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </nav>
+  <div class="hidden w-full flex-col gap-5 border-t border-line bg-white px-marginMobile py-7 text-base font-bold shadow-card md:hidden" id="mobile-menu">
+    <a class="text-muted" href="index.html" onclick="toggleMenu()">Home</a>
+    <a class="text-muted" href="about.html" onclick="toggleMenu()">About</a>
+    <a class="text-primary" href="wingsPage.html" onclick="toggleMenu()">Wings</a>
+    <a class="text-muted" href="event_page.html" onclick="toggleMenu()">Events</a>
+    <a class="text-muted" href="achievement.html" onclick="toggleMenu()">Achievements</a>
+    <a class="text-muted" href="team_page.html" onclick="toggleMenu()">Team</a>
+    <a class="rounded-lg bg-primary px-5 py-3 text-center text-white" href="join_us.html" onclick="toggleMenu()">Join Us</a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero overflow-hidden pt-20">
+    <div class="mx-auto max-w-containerMax px-marginMobile py-sectionMobile text-center md:px-gutter md:py-sectionDesktop">
+      <div class="reveal mx-auto max-w-4xl">
+        <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/75 px-4 py-2 text-sm font-extrabold uppercase tracking-[.2em] text-primary shadow-card">
+          <span class="material-symbols-outlined text-[18px]">hub</span>
+          Our Wings
+        </p>
+        <h1 class="font-heading text-5xl font-extrabold leading-tight md:text-7xl">Specialized <span class="gradient-text">Communities</span></h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">Six specialized wings, one shared passion for technology. Find your community and start your journey.</p>
+        <div class="mx-auto mt-10 h-1 w-28 rounded-full bg-gradient-to-r from-primary via-cyan to-mint"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-sectionMobile md:py-sectionDesktop">
+    <div class="mx-auto max-w-containerMax px-marginMobile md:px-gutter">
+      <div class="reveal mb-14 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+        <div>
+          <p class="mb-4 text-sm font-extrabold uppercase text-primary">Detailed View</p>
+          <h2 class="font-heading text-3xl font-extrabold md:text-5xl">Pick the wing that matches your ambition.</h2>
+        </div>
+        <p class="max-w-md text-lg leading-8 text-muted">Each wing gives you a focused learning path, hands-on activities, and peers who care about the same craft.</p>
+      </div>
+      <div class="grid gap-7 lg:grid-cols-2">
+        <article class="wing-detail-card reveal flex flex-col rounded-xl bg-white p-7 text-primary shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[52px]">code</span>
+          <h3 class="mt-7 font-heading text-3xl font-bold text-ink">Competitive Programming</h3>
+          <p class="mt-4 border-l-4 border-primary bg-primarySoft p-4 font-semibold italic leading-7 text-muted">Nurture problem-solving and prepare members for national &amp; international contests.</p>
+          <p class="mt-6 leading-8 text-muted">Develop algorithmic thinking, master data structures, and compete in prestigious programming contests. Build a portfolio of problem-solving skills that employers value.</p>
+          <div class="mt-6 grid gap-3 font-semibold text-muted">
+            <p class="activity-item">Weekly coding challenges and practice sessions</p>
+            <p class="activity-item">Participation in ICPC, Codeforces, and national contests</p>
+            <p class="activity-item">Algorithm and data structure workshops</p>
+            <p class="activity-item">Mock contest simulations</p>
+          </div>
+          <a class="mt-8 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-6 py-3 font-extrabold text-white shadow-glow transition hover:-translate-y-1" href="join_us.html">Join This Wing <span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
+        </article>
+        <article class="wing-detail-card reveal flex flex-col rounded-xl bg-white p-7 text-mint shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[52px]">deployed_code</span>
+          <h3 class="mt-7 font-heading text-3xl font-bold text-ink">Software Engineering</h3>
+          <p class="mt-4 border-l-4 border-mint bg-mint/10 p-4 font-semibold italic leading-7 text-muted">Build foundations in Linux, networking, and security for IT-infrastructure innovation.</p>
+          <p class="mt-6 leading-8 text-muted">Learn industry-standard tools and practices. Build real-world applications and understand the full software development lifecycle.</p>
+          <div class="mt-6 grid gap-3 font-semibold text-muted">
+            <p class="activity-item">Full-stack development projects</p>
+            <p class="activity-item">Linux system administration workshops</p>
+            <p class="activity-item">Networking and security labs</p>
+            <p class="activity-item">Open source contribution sessions</p>
+          </div>
+          <a class="mt-8 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-6 py-3 font-extrabold text-white shadow-glow transition hover:-translate-y-1" href="join_us.html">Join This Wing <span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
+        </article>
+        <article class="wing-detail-card reveal flex flex-col rounded-xl bg-white p-7 text-cyan shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[52px]">lan</span>
+          <h3 class="mt-7 font-heading text-3xl font-bold text-ink">Linux-Based Networking</h3>
+          <p class="mt-4 border-l-4 border-cyan bg-cyan/10 p-4 font-semibold italic leading-7 text-muted">Advance AI, ML, and deep learning through cutting-edge models and real-world use.</p>
+          <p class="mt-6 leading-8 text-muted">Master machine learning frameworks, build neural networks, and work on AI projects that solve real problems. Stay at the forefront of AI innovation.</p>
+          <div class="mt-6 grid gap-3 font-semibold text-muted">
+            <p class="activity-item">Machine learning and deep learning workshops</p>
+            <p class="activity-item">AI project hackathons</p>
+            <p class="activity-item">Research paper reading sessions</p>
+            <p class="activity-item">Model deployment and optimization</p>
+          </div>
+          <a class="mt-8 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-6 py-3 font-extrabold text-white shadow-glow transition hover:-translate-y-1" href="join_us.html">Join This Wing <span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
+        </article>
+        <article class="wing-detail-card reveal flex flex-col rounded-xl bg-white p-7 text-rose shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[52px]">psychology</span>
+          <h3 class="mt-7 font-heading text-3xl font-bold text-ink">Deep Neural Research</h3>
+          <p class="mt-4 border-l-4 border-rose bg-rose/10 p-4 font-semibold italic leading-7 text-muted">Cultivate innovation and inquiry to solve real-world challenges with emerging tech.</p>
+          <p class="mt-6 leading-8 text-muted">Explore emerging technologies like blockchain, quantum computing, and AR/VR. Conduct research and publish findings.</p>
+          <div class="mt-6 grid gap-3 font-semibold text-muted">
+            <p class="activity-item">Emerging tech research projects</p>
+            <p class="activity-item">Innovation lab sessions</p>
+            <p class="activity-item">Tech talks and guest lectures</p>
+            <p class="activity-item">Research paper writing workshops</p>
+          </div>
+          <a class="mt-8 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-6 py-3 font-extrabold text-white shadow-glow transition hover:-translate-y-1" href="join_us.html">Join This Wing <span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
+        </article>
+        <article class="wing-detail-card reveal flex flex-col rounded-xl bg-white p-7 text-amber shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[52px]">science</span>
+          <h3 class="mt-7 font-heading text-3xl font-bold text-ink">Research & Development</h3>
+          <p class="mt-4 border-l-4 border-amber bg-amber/10 p-4 font-semibold italic leading-7 text-muted">Empower members for higher studies and careers, bridging students and industry.</p>
+          <p class="mt-6 leading-8 text-muted">Build academic research skills, prepare for higher studies, and connect with industry professionals. Get guidance on university applications and career paths.</p>
+          <div class="mt-6 grid gap-3 font-semibold text-muted">
+            <p class="activity-item">Research methodology workshops</p>
+            <p class="activity-item">Higher studies guidance sessions</p>
+            <p class="activity-item">Industry networking events</p>
+            <p class="activity-item">Academic paper presentations</p>
+          </div>
+          <a class="mt-8 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-6 py-3 font-extrabold text-white shadow-glow transition hover:-translate-y-1" href="join_us.html">Join This Wing <span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
+        </article>
+        <article class="wing-detail-card reveal flex flex-col rounded-xl bg-white p-7 text-primary shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[52px]">trending_up</span>
+          <h3 class="mt-7 font-heading text-3xl font-bold text-ink">Career Guidance</h3>
+          <p class="mt-4 border-l-4 border-primary bg-primarySoft p-4 font-semibold italic leading-7 text-muted">Explore the Internet of Things ecosystem, connecting devices, data, and real-world systems through hands-on innovation.</p>
+          <p class="mt-6 leading-8 text-muted">Build IoT projects from concept to deployment. Learn about sensors, data processing, and connected systems. Create portfolio projects that stand out.</p>
+          <div class="mt-6 grid gap-3 font-semibold text-muted">
+            <p class="activity-item">IoT hardware and software workshops</p>
+            <p class="activity-item">Sensor integration and data processing</p>
+            <p class="activity-item">IoT project development</p>
+            <p class="activity-item">Industry collaboration projects</p>
+          </div>
+          <a class="mt-8 inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-6 py-3 font-extrabold text-white shadow-glow transition hover:-translate-y-1" href="join_us.html">Join This Wing <span class="material-symbols-outlined text-[20px]">arrow_forward</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-navy py-sectionMobile text-white md:py-sectionDesktop">
+    <div class="mx-auto max-w-containerMax px-marginMobile md:px-gutter">
+      <div class="reveal mx-auto mb-14 max-w-3xl text-center">
+        <p class="mb-4 text-sm font-extrabold uppercase text-cyan">Why Wings Matter</p>
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">Find your community and grow with like-minded peers.</h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <article class="benefit-card reveal rounded-xl bg-white p-7 text-primary shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[42px]">track_changes</span>
+          <h3 class="mt-8 font-heading text-xl font-bold text-ink">Focused Learning</h3>
+          <p class="mt-4 leading-7 text-muted">Deep dive into your area of interest with specialized curriculum and projects.</p>
+        </article>
+        <article class="benefit-card reveal rounded-xl bg-white p-7 text-mint shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[42px]">groups</span>
+          <h3 class="mt-8 font-heading text-xl font-bold text-ink">Community of Peers</h3>
+          <p class="mt-4 leading-7 text-muted">Connect with others who share your passion and learn together.</p>
+        </article>
+        <article class="benefit-card reveal rounded-xl bg-white p-7 text-amber shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[42px]">emoji_events</span>
+          <h3 class="mt-8 font-heading text-xl font-bold text-ink">Real-World Experience</h3>
+          <p class="mt-4 leading-7 text-muted">Build projects, compete in contests, and gain practical skills.</p>
+        </article>
+        <article class="benefit-card reveal rounded-xl bg-white p-7 text-cyan shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[42px]">rocket_launch</span>
+          <h3 class="mt-8 font-heading text-xl font-bold text-ink">Career Acceleration</h3>
+          <p class="mt-4 leading-7 text-muted">Develop skills that employers value and fast-track your career growth.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cloud py-sectionMobile md:py-sectionDesktop">
+    <div class="mx-auto max-w-containerMax px-marginMobile md:px-gutter">
+      <div class="reveal mx-auto mb-14 max-w-3xl text-center">
+        <p class="mb-4 text-sm font-extrabold uppercase text-amber">Quick Reference</p>
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">All PUCC wings at a glance.</h2>
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="quick-wing reveal rounded-xl bg-white p-6 text-primary shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[38px]">code</span>
+          <p class="mt-5 font-heading text-xl font-bold text-ink">Competitive Programming</p>
+        </div>
+        <div class="quick-wing reveal rounded-xl bg-white p-6 text-mint shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[38px]">deployed_code</span>
+          <p class="mt-5 font-heading text-xl font-bold text-ink">Software Engineering</p>
+        </div>
+        <div class="quick-wing reveal rounded-xl bg-white p-6 text-cyan shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[38px]">lan</span>
+          <p class="mt-5 font-heading text-xl font-bold text-ink">Linux-Based Networking</p>
+        </div>
+        <div class="quick-wing reveal rounded-xl bg-white p-6 text-rose shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[38px]">psychology</span>
+          <p class="mt-5 font-heading text-xl font-bold text-ink">Deep Neural Research</p>
+        </div>
+        <div class="quick-wing reveal rounded-xl bg-white p-6 text-amber shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[38px]">science</span>
+          <p class="mt-5 font-heading text-xl font-bold text-ink">Research & Development</p>
+        </div>
+        <div class="quick-wing reveal rounded-xl bg-white p-6 text-primary shadow-card transition hover:-translate-y-2">
+          <span class="material-symbols-outlined wing-icon text-[38px]">trending_up</span>
+          <p class="mt-5 font-heading text-xl font-bold text-ink">Career Guidance</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-[#0b1020] py-16 text-white">
+  <div class="mx-auto grid max-w-containerMax gap-12 px-marginMobile md:grid-cols-4 md:px-gutter">
+    <div>
+      <div class="flex items-center gap-3">
+        <img class="h-12 w-12 object-contain" src="logos/computerclublogo.jpeg" alt="PUCC logo"/>
+        <div>
+          <p class="font-heading text-xl font-extrabold">PUCC</p>
+          <p class="text-sm font-semibold text-white/60">Premier University Computer Club</p>
+        </div>
+      </div>
+      <p class="mt-6 max-w-sm leading-7 text-white/60">A trusted student community for learning, research, competition, and career growth.</p>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Quick Links</h3>
+      <ul class="mt-5 grid gap-3 text-white/65">
+        <li><a class="transition hover:text-white" href="index.html">Home</a></li>
+        <li><a class="transition hover:text-white" href="about.html">About</a></li>
+        <li><a class="transition hover:text-white" href="wingsPage.html">Wings</a></li>
+        <li><a class="transition hover:text-white" href="event_page.html">Events</a></li>
+        <li><a class="transition hover:text-white" href="achievement.html">Achievements</a></li>
+        <li><a class="transition hover:text-white" href="team_page.html">Team</a></li>
+        <li><a class="transition hover:text-white" href="join_us.html">Join Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Connect</h3>
+      <div class="mt-5 grid gap-4 text-white/65">
+        <p class="flex gap-3"><span class="material-symbols-outlined text-[20px]">mail</span> pucc.official@pu.ac.bd</p>
+        <div class="flex gap-3">
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="Facebook"><span class="material-symbols-outlined">public</span></a>
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="LinkedIn"><span class="material-symbols-outlined">work</span></a>
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="YouTube"><span class="material-symbols-outlined">smart_display</span></a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Location</h3>
+      <p class="mt-5 text-white/65 flex gap-3"><span class="material-symbols-outlined text-[20px]">location_on</span> Premier University, Chittagong</p>
+      <p class="mt-4 text-sm font-semibold text-white/50">&copy; 2026 PUCC. All rights reserved.</p>
+      <p class="text-sm font-semibold text-white/50">1 July 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("flex");
+  }
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add("is-visible");
+    });
+  }, { threshold: 0.14 });
+  document.querySelectorAll(".reveal").forEach((el, index) => {
+    el.style.transitionDelay = `${Math.min(index % 3, 2) * 90}ms`;
+    revealObserver.observe(el);
+  });
+</script>
+</body>
+</html>

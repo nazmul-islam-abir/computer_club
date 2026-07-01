@@ -1,0 +1,970 @@
+﻿<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Join Us | PUCC - Premier University Computer Club</title>
+<meta content="Join Premier University Computer Club (PUCC) - Become a member, access workshops, competitions, and build your tech career." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          ink: "#111827",
+          muted: "#5f6472",
+          cloud: "#f7f9fc",
+          line: "#dfe4ee",
+          primary: "#3525cd",
+          primarySoft: "#ebe9ff",
+          cyan: "#06b6d4",
+          mint: "#14b8a6",
+          amber: "#f59e0b",
+          rose: "#e11d48",
+          navy: "#101828"
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem",
+          lg: "0.5rem",
+          xl: "0.75rem",
+          full: "9999px"
+        },
+        spacing: {
+          containerMax: "1200px",
+          marginMobile: "20px",
+          gutter: "24px",
+          sectionMobile: "72px",
+          sectionDesktop: "120px"
+        },
+        fontFamily: {
+          heading: ["Sora", "sans-serif"],
+          body: ["Manrope", "sans-serif"]
+        },
+        boxShadow: {
+          glow: "0 24px 70px rgba(53, 37, 205, .18)",
+          card: "0 18px 45px rgba(17, 24, 39, .08)"
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  }
+
+  body {
+    font-family: "Manrope", sans-serif;
+    background: #ffffff;
+    color: #111827;
+  }
+
+  .brand-logo {
+    height: 76px;
+    width: 76px;
+    object-fit: contain;
+  }
+
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    background: #3525cd;
+    bottom: -8px;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+    width: 100%;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    transform: scaleX(1);
+  }
+
+  .page-hero {
+    background:
+      radial-gradient(circle at 16% 22%, rgba(6, 182, 212, .16), transparent 28%),
+      radial-gradient(circle at 84% 12%, rgba(245, 158, 11, .17), transparent 26%),
+      linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #edf7ff 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #3525cd, #06b6d4, #14b8a6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .75s ease, transform .75s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .benefit-card {
+    background: #ffffff;
+    border: 1px solid #dfe4ee;
+    border-radius: 1rem;
+    padding: 1.75rem;
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 48px rgba(26, 26, 26, 0.08);
+    border-color: #3525cd30;
+  }
+
+  .benefit-icon {
+    font-size: 2.8rem;
+    margin-bottom: 0.75rem;
+    display: inline-block;
+  }
+
+  .process-step {
+    background: #ffffff;
+    border: 1px solid #dfe4ee;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 1;
+  }
+
+  .process-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(108, 99, 255, 0.08);
+    border-color: #3525cd40;
+  }
+
+  .step-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #3525cd;
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-icon {
+    font-size: 2.5rem;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+
+  .process-arrow {
+    font-size: 2rem;
+    color: #5f6472;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .process-arrow .material-symbols-outlined {
+    font-size: 2rem;
+  }
+
+  .process-container {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .fee-card {
+    background: #ffffff;
+    border: 1px solid #dfe4ee;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fee-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px rgba(26, 26, 26, 0.08);
+  }
+
+  .fee-card.recommended {
+    border-color: #3525cd;
+    box-shadow: 0 8px 32px rgba(108, 99, 255, 0.12);
+  }
+
+  .fee-card.recommended::before {
+    content: "★ RECOMMENDED";
+    position: absolute;
+    top: 0.75rem;
+    right: -2.25rem;
+    background: #3525cd;
+    color: #ffffff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.2rem 2.5rem;
+    transform: rotate(45deg);
+  }
+
+  .fee-price {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #111827;
+  }
+
+  .fee-price span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #5f6472;
+  }
+
+  .fee-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #5f6472;
+    padding: 0.3rem 0;
+    justify-content: center;
+  }
+
+  .fee-feature .material-symbols-outlined {
+    font-size: 1.1rem;
+    color: #10B981;
+  }
+
+  /* ===== IMPROVED FORM STYLES ===== */
+  .form-container {
+    background: #ffffff;
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    border: 1px solid #dfe4ee;
+    box-shadow: 0 8px 40px rgba(26, 26, 26, 0.04);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .form-container:hover {
+    box-shadow: 0 12px 60px rgba(26, 26, 26, 0.06);
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #111827;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.01em;
+  }
+
+  .form-label .required {
+    color: #e11d48;
+    margin-left: 2px;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #dfe4ee;
+    border-radius: 0.75rem;
+    font-size: 0.95rem;
+    font-family: "Manrope", sans-serif;
+    transition: all 0.3s ease;
+    background: #fafbfc;
+    color: #111827;
+  }
+
+  .form-input:hover {
+    background: #ffffff;
+    border-color: #c5cbe0;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #3525cd;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.08);
+    background: #ffffff;
+  }
+
+  .form-input::placeholder {
+    color: #8a8a8a;
+    font-weight: 400;
+  }
+
+  .form-input.error {
+    border-color: #e11d48;
+    box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.08);
+  }
+
+  .form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8A8A' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  .form-select option {
+    padding: 0.5rem;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 130px;
+  }
+
+  .form-textarea::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .form-textarea::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 3px;
+  }
+
+  .form-textarea::-webkit-scrollbar-thumb {
+    background: #3525cd40;
+    border-radius: 3px;
+  }
+
+  .form-textarea::-webkit-scrollbar-thumb:hover {
+    background: #3525cd60;
+  }
+
+  .btn-submit {
+    background: #3525cd;
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-submit::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .btn-submit:hover::after {
+    left: 100%;
+  }
+
+  .btn-submit:hover {
+    background: #2b1fa8;
+    box-shadow: 0 8px 40px rgba(108, 99, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .btn-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 20px rgba(108, 99, 255, 0.2);
+  }
+
+  .btn-submit .material-symbols-outlined {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .btn-submit:hover .material-symbols-outlined {
+    transform: translateX(4px);
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Form success message */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .form-success.show {
+    display: block;
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .form-success .success-icon {
+    font-size: 4rem;
+    color: #10B981;
+    margin-bottom: 1rem;
+  }
+
+  .form-success h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-success p {
+    color: #5f6472;
+    font-size: 1rem;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .contact-item:hover {
+    color: #3525cd;
+  }
+
+  .social-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .social-icon:hover {
+    background: #3525cd;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(108, 99, 255, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .brand-logo {
+      height: 60px;
+      width: 60px;
+    }
+    .process-container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .process-arrow {
+      transform: rotate(90deg);
+      padding: 0.25rem 0;
+    }
+    .process-arrow .material-symbols-outlined {
+      font-size: 1.5rem;
+    }
+    .step-number {
+      font-size: 2rem;
+    }
+    .fee-price {
+      font-size: 2rem;
+    }
+    .fee-card.recommended::before {
+      font-size: 0.5rem;
+      top: 0.5rem;
+      right: -2rem;
+      padding: 0.15rem 2rem;
+    }
+    .form-container {
+      padding: 1.5rem;
+    }
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .btn-submit {
+      padding: 0.85rem 1.5rem;
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .benefit-card {
+      padding: 1.25rem;
+    }
+    .benefit-icon {
+      font-size: 2.2rem;
+    }
+    .process-step {
+      padding: 1.25rem;
+    }
+    .fee-card {
+      padding: 1.5rem;
+    }
+    .fee-price {
+      font-size: 1.75rem;
+    }
+    .fee-feature {
+      font-size: 0.8rem;
+    }
+    .form-container {
+      padding: 1.25rem;
+    }
+    .form-input {
+      padding: 0.7rem 0.9rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+</head>
+<body class="font-body text-ink">
+
+<!-- ========== NAVIGATION ========== -->
+<header class="fixed top-0 z-50 w-full border-b border-line/80 bg-white/90 backdrop-blur-xl">
+  <nav class="mx-auto flex h-20 max-w-containerMax items-center justify-between px-marginMobile md:px-gutter">
+    <a class="flex items-center" href="index.html" aria-label="PUCC home">
+      <img class="brand-logo" src="logos/computerclublogo.jpeg" alt="Premier University Computer Club logo"/>
+    </a>
+
+    <div class="hidden items-center gap-8 text-sm font-bold text-muted md:flex">
+      <a class="nav-link hover:text-primary" href="index.html">Home</a>
+      <a class="nav-link hover:text-primary" href="about.html">About</a>
+      <a class="nav-link hover:text-primary" href="wingsPage.html">Wings</a>
+      <a class="nav-link hover:text-primary" href="event_page.html">Events</a>
+      <a class="nav-link hover:text-primary" href="achievement.html">Achievements</a>
+      <a class="nav-link hover:text-primary" href="team_page.html">Team</a>
+      <a class="nav-link active text-primary" href="join_us.html">Join Us</a>
+    </div>
+
+    <button class="grid h-11 w-11 place-items-center rounded-lg border border-line text-ink md:hidden" onclick="toggleMenu()" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </nav>
+
+  <div class="hidden w-full flex-col gap-5 border-t border-line bg-white px-marginMobile py-7 text-base font-bold shadow-card md:hidden" id="mobile-menu">
+    <a class="text-muted" href="index.html" onclick="toggleMenu()">Home</a>
+    <a class="text-muted" href="about.html" onclick="toggleMenu()">About</a>
+    <a class="text-muted" href="wingsPage.html" onclick="toggleMenu()">Wings</a>
+    <a class="text-muted" href="event_page.html" onclick="toggleMenu()">Events</a>
+    <a class="text-muted" href="achievement.html" onclick="toggleMenu()">Achievements</a>
+    <a class="text-muted" href="team_page.html" onclick="toggleMenu()">Team</a>
+    <a class="text-primary" href="join_us.html" onclick="toggleMenu()">Join Us</a>
+  </div>
+</header>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main>
+  <section class="page-hero overflow-hidden pt-20">
+    <div class="mx-auto max-w-containerMax px-marginMobile py-sectionMobile text-center md:px-gutter md:py-sectionDesktop">
+      <div class="reveal mx-auto max-w-4xl">
+        <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/75 px-4 py-2 text-sm font-extrabold uppercase tracking-[.2em] text-primary shadow-card">
+          <span class="material-symbols-outlined text-[18px]">person_add</span>
+          Join Us
+        </p>
+        <h1 class="font-heading text-5xl font-extrabold leading-tight md:text-7xl">Become a <span class="gradient-text">Member</span></h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">Join PUCC and start your journey in tech. Learn, network, build, and lead.</p>
+        <div class="mx-auto mt-10 h-1 w-28 rounded-full bg-gradient-to-r from-primary via-cyan to-mint"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="bg-cloud py-sectionMobile md:py-sectionDesktop">
+    <div class="mx-auto max-w-containerMax px-marginMobile md:px-gutter">
+      <div class="text-center mb-12">
+        <p class="mb-2 text-sm font-extrabold uppercase text-primary">Why Join PUCC?</p>
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">What you gain as a member</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">🎓</div>
+          <h3 class="font-extrabold text-lg text-ink">Learn from Experts</h3>
+          <p class="text-muted text-sm mt-2">Get guidance from experienced mentors and industry professionals.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">🤝</div>
+          <h3 class="font-extrabold text-lg text-ink">Build Your Network</h3>
+          <p class="text-muted text-sm mt-2">Connect with like-minded peers, alumni, and industry leaders.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">🏆</div>
+          <h3 class="font-extrabold text-lg text-ink">Gain Experience</h3>
+          <p class="text-muted text-sm mt-2">Work on real-world projects, competitions, and workshops.</p>
+        </div>
+        <div class="benefit-card reveal">
+          <div class="benefit-icon">🚀</div>
+          <h3 class="font-extrabold text-lg text-ink">Launch Your Career</h3>
+          <p class="text-muted text-sm mt-2">Build skills that employers value and accelerate your career growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="bg-white py-sectionMobile md:py-sectionDesktop">
+    <div class="mx-auto max-w-containerMax px-marginMobile md:px-gutter">
+      <div class="text-center mb-12">
+        <p class="mb-2 text-sm font-extrabold uppercase text-cyan">How to Join</p>
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">Two simple steps</h2>
+        <p class="text-muted text-lg mt-2">Start your journey with PUCC in just 2 steps.</p>
+      </div>
+      <div class="process-container max-w-4xl mx-auto">
+        <div class="process-step reveal">
+          <div class="step-number">01</div>
+          <div class="step-icon">📝</div>
+          <h3 class="font-extrabold text-lg text-ink">Fill the Interest Form</h3>
+          <p class="text-muted text-sm mt-2">Complete the form below with your details and wing preference.</p>
+        </div>
+        <div class="process-arrow"><span class="material-symbols-outlined">arrow_forward</span></div>
+        <div class="process-step reveal">
+          <div class="step-number">02</div>
+          <div class="step-icon">💳</div>
+          <h3 class="font-extrabold text-lg text-ink">Pay Membership Fee</h3>
+          <p class="text-muted text-sm mt-2">Pay the membership fee and complete your registration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fees -->
+  <section class="bg-cloud py-sectionMobile md:py-sectionDesktop">
+    <div class="mx-auto max-w-5xl px-marginMobile md:px-gutter">
+      <div class="text-center mb-12">
+        <p class="mb-2 text-sm font-extrabold uppercase text-amber">Membership Fees</p>
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">Choose your plan</h2>
+        <p class="text-muted text-lg mt-2">Select the membership that fits your needs.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div class="fee-card reveal">
+          <h3 class="font-extrabold text-xl text-ink">Regular Membership</h3>
+          <div class="fee-price mt-3">350 <span>BDT</span></div>
+          <p class="text-muted text-sm mt-1">One-time registration fee</p>
+          <div class="mt-6 space-y-2">
+            <div class="fee-feature"><span class="material-symbols-outlined">check_circle</span> Access to all regular events</div>
+            <div class="fee-feature"><span class="material-symbols-outlined">check_circle</span> Membership certificate</div>
+            <div class="fee-feature"><span class="material-symbols-outlined">check_circle</span> Community access</div>
+            <div class="fee-feature"><span class="material-symbols-outlined">check_circle</span> Resource library access</div>
+          </div>
+          <a href="#form" class="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-lg border-2 border-primary font-bold text-primary transition hover:bg-primary hover:text-white hover:shadow-glow">Join Now</a>
+        </div>
+        <div class="fee-card recommended reveal">
+          <h3 class="font-extrabold text-xl text-ink">Premium Membership</h3>
+          <div class="fee-price mt-3">450 <span>BDT</span></div>
+          <p class="text-muted text-sm mt-1">Including special events</p>
+          <div class="mt-6 space-y-2">
+            <div class="fee-feature"><span class="material-symbols-outlined">check_circle</span> All regular membership benefits</div>
+            <div class="fee-feature"><span class="material-symbols-outlined">check_circle</span> Access to special events &amp; workshops</div>
+            <div class="fee-feature"><span class="material-symbols-outlined">check_circle</span> Event participation priority</div>
+            <div class="fee-feature"><span class="material-symbols-outlined">check_circle</span> Premium community access</div>
+          </div>
+          <a href="#form" class="inline-flex items-center gap-2 mt-6 px-6 py-3 rounded-lg bg-primary text-white font-bold transition hover:bg-primaryDark hover:shadow-glow">Join Now <span class="material-symbols-outlined text-[18px]">arrow_forward</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Improved Form -->
+  <section class="bg-white py-sectionMobile md:py-sectionDesktop" id="form">
+    <div class="mx-auto max-w-3xl px-marginMobile md:px-gutter">
+      <div class="text-center mb-10">
+        <p class="mb-2 text-sm font-extrabold uppercase text-primary">Interest Form</p>
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">Tell us about yourself</h2>
+        <p class="text-muted text-lg mt-2">We'd love to know more about you and your tech interests.</p>
+      </div>
+
+      <div class="form-container">
+        <form id="joinForm" onsubmit="handleSubmit(event)">
+          <!-- Row: Full Name + Email -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fullName">Full Name <span class="required">*</span></label>
+              <input class="form-input" id="fullName" placeholder="Enter your full name" required type="text"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address <span class="required">*</span></label>
+              <input class="form-input" id="email" placeholder="your@email.com" required type="email"/>
+            </div>
+          </div>
+
+          <!-- Row: Phone + Wing -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number <span class="required">*</span></label>
+              <input class="form-input" id="phone" placeholder="Enter your phone number" required type="tel"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="wing">Wing Interest <span class="required">*</span></label>
+              <select class="form-input form-select" id="wing" required>
+                <option value="">Select your preferred wing</option>
+                <option value="competitive-programming">Competitive Programming</option>
+                <option value="software-engineering">Software Engineering</option>
+                <option value="linux-networking">Linux-Based Networking</option>
+                <option value="deep-neural-research">Deep Neural Research</option>
+                <option value="research-development">Research &amp; Development</option>
+                <option value="career-guidance">Career Guidance</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Why Join -->
+          <div class="form-group">
+            <label class="form-label" for="why">Why do you want to join PUCC? <span class="required">*</span></label>
+            <textarea class="form-input form-textarea" id="why" placeholder="Tell us about your interest in tech and why you want to join..." required></textarea>
+          </div>
+
+          <!-- Submit -->
+          <button class="btn-submit" type="submit">
+            Submit Application
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+
+          <!-- Success Message -->
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">✅</div>
+            <h3>Application Submitted!</h3>
+            <p>Thank you for your interest in PUCC. We'll contact you soon with the next steps.</p>
+            <button type="button" class="mt-6 px-6 py-3 rounded-lg bg-primary text-white font-bold transition hover:bg-primaryDark" onclick="resetForm()">Submit Another Application</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="relative overflow-hidden bg-navy py-sectionMobile text-white md:py-sectionDesktop">
+    <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-cyan to-amber"></div>
+    <div class="reveal mx-auto max-w-4xl px-marginMobile text-center">
+      <span class="material-symbols-outlined text-cyan text-[64px]">support_agent</span>
+      <h2 class="mt-6 font-heading text-4xl font-extrabold leading-tight md:text-6xl">Get in Touch</h2>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">Have questions? We're here to help.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        <a class="contact-item justify-center" href="mailto:contact@pucc.edu.bd">
+          <span class="material-symbols-outlined text-2xl">mail</span>
+          <span>contact@pucc.edu.bd</span>
+        </a>
+        <a class="contact-item justify-center" href="tel:+880123456789">
+          <span class="material-symbols-outlined text-2xl">call</span>
+          <span>+880-123-456789</span>
+        </a>
+        <div class="contact-item justify-center">
+          <span class="material-symbols-outlined text-2xl">location_on</span>
+          <span>Premier University, Chittagong</span>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <p class="text-white/50 text-sm mb-4">Follow us on social media</p>
+        <div class="flex justify-center gap-4">
+          <a class="social-icon" href="#" aria-label="Facebook"><span class="material-symbols-outlined">public</span></a>
+          <a class="social-icon" href="#" aria-label="LinkedIn"><span class="material-symbols-outlined">work</span></a>
+          <a class="social-icon" href="#" aria-label="YouTube"><span class="material-symbols-outlined">smart_display</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-[#0b1020] py-16 text-white">
+  <div class="mx-auto grid max-w-containerMax gap-12 px-marginMobile md:grid-cols-4 md:px-gutter">
+    <div>
+      <div class="flex items-center gap-3">
+        <img class="h-12 w-12 object-contain" src="logos/computerclublogo.jpeg" alt="PUCC logo"/>
+        <div>
+          <p class="font-heading text-xl font-extrabold">PUCC</p>
+          <p class="text-sm font-semibold text-white/60">Premier University Computer Club</p>
+        </div>
+      </div>
+      <p class="mt-6 max-w-sm leading-7 text-white/60">Empowering the next generation of technologists through collaboration, competition, and practical learning.</p>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Quick Links</h3>
+      <ul class="mt-5 grid gap-3 text-white/65">
+        <li><a class="transition hover:text-white" href="index.html">Home</a></li>
+        <li><a class="transition hover:text-white" href="about.html">About</a></li>
+        <li><a class="transition hover:text-white" href="wingsPage.html">Wings</a></li>
+        <li><a class="transition hover:text-white" href="event_page.html">Events</a></li>
+        <li><a class="transition hover:text-white" href="achievement.html">Achievements</a></li>
+        <li><a class="transition hover:text-white" href="team_page.html">Team</a></li>
+        <li><a class="transition hover:text-white" href="join_us.html">Join Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Connect</h3>
+      <div class="mt-5 grid gap-4 text-white/65">
+        <p class="flex gap-3"><span class="material-symbols-outlined text-[20px]">mail</span> pucc.official@pu.ac.bd</p>
+        <div class="flex gap-3">
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="Facebook"><span class="material-symbols-outlined">public</span></a>
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="LinkedIn"><span class="material-symbols-outlined">work</span></a>
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="YouTube"><span class="material-symbols-outlined">smart_display</span></a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Location</h3>
+      <p class="mt-5 text-white/65 flex gap-3"><span class="material-symbols-outlined text-[20px]">location_on</span> Premier University, Chittagong</p>
+      <p class="mt-4 text-sm font-semibold text-white/50">&copy; 2026 PUCC. All rights reserved.</p>
+      <p class="text-sm font-semibold text-white/50">1 July 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("flex");
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    // Get form elements
+    const form = document.getElementById('joinForm');
+    const inputs = form.querySelectorAll('.form-input');
+    let isValid = true;
+
+    // Validate all required fields
+    inputs.forEach(input => {
+      if (input.hasAttribute('required') && !input.value.trim()) {
+        input.classList.add('error');
+        isValid = false;
+      } else {
+        input.classList.remove('error');
+      }
+    });
+
+    // Email validation
+    const email = document.getElementById('email');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.value && !emailPattern.test(email.value)) {
+      email.classList.add('error');
+      isValid = false;
+    }
+
+    // Phone validation (basic)
+    const phone = document.getElementById('phone');
+    if (phone.value && phone.value.length < 10) {
+      phone.classList.add('error');
+      isValid = false;
+    }
+
+    if (!isValid) {
+      // Scroll to first error
+      const firstError = form.querySelector('.error');
+      if (firstError) {
+        firstError.focus();
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
+    // Show success
+    document.getElementById('formSuccess').classList.add('show');
+    document.querySelector('.btn-submit').style.display = 'none';
+
+    // Hide form fields
+    form.querySelectorAll('.form-group, .form-row, .btn-submit').forEach(el => {
+      if (el !== document.getElementById('formSuccess')) {
+        el.style.display = 'none';
+      }
+    });
+
+    // Log form data (for demo)
+    console.log('Form submitted:', {
+      name: document.getElementById('fullName').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      wing: document.getElementById('wing').value,
+      why: document.getElementById('why').value
+    });
+  }
+
+  function resetForm() {
+    const form = document.getElementById('joinForm');
+    document.getElementById('formSuccess').classList.remove('show');
+
+    // Show all fields again
+    form.querySelectorAll('.form-group, .form-row').forEach(el => {
+      el.style.display = '';
+    });
+    document.querySelector('.btn-submit').style.display = 'flex';
+
+    // Reset form
+    form.reset();
+
+    // Remove error states
+    form.querySelectorAll('.error').forEach(el => {
+      el.classList.remove('error');
+    });
+
+    // Scroll to form
+    document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Remove error state on input
+  document.querySelectorAll('.form-input').forEach(input => {
+    input.addEventListener('input', function() {
+      this.classList.remove('error');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, { threshold: 0.14 });
+
+  document.querySelectorAll(".reveal").forEach((el, index) => {
+    el.style.transitionDelay = `${Math.min(index % 3, 2) * 90}ms`;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

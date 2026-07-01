@@ -1,0 +1,568 @@
+﻿<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Events | PUCC - Premier University Computer Club</title>
+<meta content="Explore upcoming and past events at Premier University Computer Club (PUCC) - workshops, competitions, bootcamps, and seminars." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          ink: "#111827",
+          muted: "#5f6472",
+          cloud: "#f7f9fc",
+          line: "#dfe4ee",
+          primary: "#3525cd",
+          primarySoft: "#ebe9ff",
+          cyan: "#06b6d4",
+          mint: "#14b8a6",
+          amber: "#f59e0b",
+          rose: "#e11d48",
+          navy: "#101828"
+        },
+        borderRadius: {
+          DEFAULT: "0.25rem",
+          lg: "0.5rem",
+          xl: "0.75rem",
+          full: "9999px"
+        },
+        spacing: {
+          containerMax: "1200px",
+          marginMobile: "20px",
+          gutter: "24px",
+          sectionMobile: "72px",
+          sectionDesktop: "120px"
+        },
+        fontFamily: {
+          heading: ["Sora", "sans-serif"],
+          body: ["Manrope", "sans-serif"]
+        },
+        boxShadow: {
+          glow: "0 24px 70px rgba(53, 37, 205, .18)",
+          card: "0 18px 45px rgba(17, 24, 39, .08)"
+        }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+  }
+
+  body {
+    font-family: "Manrope", sans-serif;
+    background: #ffffff;
+    color: #111827;
+  }
+
+  .brand-logo {
+    height: 76px;
+    width: 76px;
+    object-fit: contain;
+  }
+
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::after {
+    background: #3525cd;
+    bottom: -8px;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+    width: 100%;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    transform: scaleX(1);
+  }
+
+  .page-hero {
+    background:
+      radial-gradient(circle at 16% 22%, rgba(6, 182, 212, .16), transparent 28%),
+      radial-gradient(circle at 84% 12%, rgba(245, 158, 11, .17), transparent 26%),
+      linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #edf7ff 100%);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .75s ease, transform .75s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.25s ease;
+    border: 2px solid #dfe4ee;
+    background: transparent;
+    color: #5f6472;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover {
+    border-color: #3525cd;
+    color: #3525cd;
+  }
+
+  .filter-btn.active {
+    background: #3525cd;
+    border-color: #3525cd;
+    color: #ffffff;
+    box-shadow: 0 0 32px rgba(108, 99, 255, 0.2);
+  }
+
+  .filter-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: center;
+  }
+
+  .filter-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .event-card {
+    background: #ffffff;
+    border: 1px solid #dfe4ee;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .event-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 48px rgba(26, 26, 26, 0.08);
+    border-color: #3525cd40;
+  }
+
+  .event-date {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #3525cd;
+    line-height: 1.2;
+  }
+
+  .event-date-past {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #5f6472;
+  }
+
+  .event-type-badge {
+    padding: 0.2rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+  }
+
+  .badge-competition { background: #3525cd20; color: #3525cd; }
+  .badge-workshop { background: #3B82F620; color: #3B82F6; }
+  .badge-bootcamp { background: #10B98120; color: #10B981; }
+  .badge-seminar { background: #F59E0B20; color: #F59E0B; }
+
+  .event-cta {
+    color: #3525cd;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: gap 0.25s ease;
+    text-decoration: none;
+  }
+
+  .event-cta:hover {
+    gap: 0.5rem;
+  }
+
+  .event-cta .material-symbols-outlined {
+    font-size: 1.1rem;
+    transition: transform 0.25s ease;
+  }
+
+  .event-cta:hover .material-symbols-outlined {
+    transform: translateX(4px);
+  }
+
+  .event-grid {
+    display: grid;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .event-grid.upcoming-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-grid.past-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .color-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .event-grid.upcoming-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .event-grid.past-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .event-grid.upcoming-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .event-grid.past-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .brand-logo {
+      height: 60px;
+      width: 60px;
+    }
+    .event-card {
+      padding: 1.25rem;
+    }
+    .event-date {
+      font-size: 1.25rem;
+    }
+    .filter-btn {
+      padding: 0.4rem 1rem;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+    .filter-scroll {
+      justify-content: flex-start;
+    }
+  }
+</style>
+</head>
+<body class="font-body text-ink">
+
+<!-- ========== NAVIGATION ========== -->
+<header class="fixed top-0 z-50 w-full border-b border-line/80 bg-white/90 backdrop-blur-xl">
+  <nav class="mx-auto flex h-20 max-w-containerMax items-center justify-between px-marginMobile md:px-gutter">
+    <a class="flex items-center" href="index.html" aria-label="PUCC home">
+      <img class="brand-logo" src="logos/computerclublogo.jpeg" alt="Premier University Computer Club logo"/>
+    </a>
+
+    <div class="hidden items-center gap-8 text-sm font-bold text-muted md:flex">
+      <a class="nav-link hover:text-primary" href="index.html">Home</a>
+      <a class="nav-link hover:text-primary" href="about.html">About</a>
+      <a class="nav-link hover:text-primary" href="wingsPage.html">Wings</a>
+      <a class="nav-link active text-primary" href="event_page.html">Events</a>
+      <a class="nav-link hover:text-primary" href="achievement.html">Achievements</a>
+      <a class="nav-link hover:text-primary" href="team_page.html">Team</a>
+      <a class="rounded-lg bg-primary px-5 py-3 text-white shadow-glow transition hover:-translate-y-0.5" href="join_us.html">Join Us</a>
+    </div>
+
+    <button class="grid h-11 w-11 place-items-center rounded-lg border border-line text-ink md:hidden" onclick="toggleMenu()" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </nav>
+
+  <div class="hidden w-full flex-col gap-5 border-t border-line bg-white px-marginMobile py-7 text-base font-bold shadow-card md:hidden" id="mobile-menu">
+    <a class="text-muted" href="index.html" onclick="toggleMenu()">Home</a>
+    <a class="text-muted" href="about.html" onclick="toggleMenu()">About</a>
+    <a class="text-muted" href="wingsPage.html" onclick="toggleMenu()">Wings</a>
+    <a class="text-primary" href="event_page.html" onclick="toggleMenu()">Events</a>
+    <a class="text-muted" href="achievement.html" onclick="toggleMenu()">Achievements</a>
+    <a class="text-muted" href="team_page.html" onclick="toggleMenu()">Team</a>
+    <a class="rounded-lg bg-primary px-5 py-3 text-center text-white" href="join_us.html" onclick="toggleMenu()">Join Us</a>
+  </div>
+</header>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main>
+  <section class="page-hero overflow-hidden pt-20">
+    <div class="mx-auto max-w-containerMax px-marginMobile py-sectionMobile text-center md:px-gutter md:py-sectionDesktop">
+      <div class="reveal mx-auto max-w-4xl">
+        <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/75 px-4 py-2 text-sm font-extrabold uppercase tracking-[.2em] text-primary shadow-card">
+          <span class="material-symbols-outlined text-[18px]">event</span>
+          PUCC Events
+        </p>
+        <h1 class="font-heading text-5xl font-extrabold leading-tight md:text-7xl">Events That <span class="gradient-text">Inspire</span></h1>
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted md:text-xl">Workshops, competitions, bootcamps, and seminars — there's always something happening at PUCC.</p>
+        <div class="mx-auto mt-10 h-1 w-28 rounded-full bg-gradient-to-r from-primary via-cyan to-mint"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white border-b border-line py-6 sticky top-20 z-30 shadow-sm">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="filter-scroll">
+        <button class="filter-btn active" data-filter="all" onclick="filterEvents('all')">All</button>
+        <button class="filter-btn" data-filter="competition" onclick="filterEvents('competition')">Competition</button>
+        <button class="filter-btn" data-filter="workshop" onclick="filterEvents('workshop')">Workshop</button>
+        <button class="filter-btn" data-filter="bootcamp" onclick="filterEvents('bootcamp')">Bootcamp</button>
+        <button class="filter-btn" data-filter="seminar" onclick="filterEvents('seminar')">Seminar</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cloud py-sectionMobile md:py-sectionDesktop" id="upcoming">
+    <div class="mx-auto max-w-containerMax px-marginMobile md:px-gutter">
+      <div class="reveal mb-10">
+        <p class="mb-2 text-sm font-extrabold uppercase text-cyan">Upcoming Events</p>
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">Don't miss out — register now!</h2>
+      </div>
+      <div class="event-grid upcoming-grid" id="upcomingGrid">
+        <div class="event-card reveal" data-type="competition">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="event-date">July 15, 2026</div>
+              <span class="event-type-badge badge-competition mt-1 inline-block">Competition</span>
+            </div>
+          </div>
+          <h3 class="font-extrabold text-2xl text-ink mt-3">Code Clash 2026</h3>
+          <p class="text-muted text-sm leading-relaxed mt-2">PUCC's premier competitive programming competition. Test your skills against the best coders in the university.</p>
+          <div class="mt-4 flex flex-col gap-1 text-sm text-muted">
+            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Premier University, Chittagong</span>
+            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 10:00 AM - 4:00 PM</span>
+          </div>
+          <a href="#" class="event-cta mt-4">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+        <div class="event-card reveal" data-type="bootcamp">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="event-date">July 22, 2026</div>
+              <span class="event-type-badge badge-bootcamp mt-1 inline-block">Bootcamp</span>
+            </div>
+          </div>
+          <h3 class="font-extrabold text-2xl text-ink mt-3">AI/ML Bootcamp</h3>
+          <p class="text-muted text-sm leading-relaxed mt-2">Intensive 2-day bootcamp covering machine learning fundamentals, neural networks, and practical AI applications.</p>
+          <div class="mt-4 flex flex-col gap-1 text-sm text-muted">
+            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Premier University, Chittagong</span>
+            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 9:00 AM - 5:00 PM</span>
+          </div>
+          <a href="#" class="event-cta mt-4">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+        <div class="event-card reveal" data-type="workshop">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="event-date">August 5, 2026</div>
+              <span class="event-type-badge badge-workshop mt-1 inline-block">Workshop</span>
+            </div>
+          </div>
+          <h3 class="font-extrabold text-2xl text-ink mt-3">Linux Networking Workshop</h3>
+          <p class="text-muted text-sm leading-relaxed mt-2">Hands-on workshop covering Linux networking, security, and infrastructure management.</p>
+          <div class="mt-4 flex flex-col gap-1 text-sm text-muted">
+            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Premier University, Chittagong</span>
+            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 2:00 PM - 6:00 PM</span>
+          </div>
+          <a href="#" class="event-cta mt-4">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-sectionMobile md:py-sectionDesktop" id="past">
+    <div class="mx-auto max-w-containerMax px-marginMobile md:px-gutter">
+      <div class="reveal mb-10">
+        <p class="mb-2 text-sm font-extrabold uppercase text-amber">Past Events</p>
+        <h2 class="font-heading text-3xl font-extrabold md:text-5xl">Relive the memories.</h2>
+      </div>
+      <div class="event-grid past-grid" id="pastGrid">
+        <div class="event-card reveal" data-type="seminar" style="opacity:0.85;">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="event-date-past">June 10, 2026</div>
+              <span class="event-type-badge badge-seminar mt-1 inline-block">Seminar</span>
+            </div>
+          </div>
+          <h3 class="font-extrabold text-xl text-ink mt-2">Future of AI Seminar</h3>
+          <p class="text-muted text-sm leading-relaxed mt-2">Expert panel discussion on the future of artificial intelligence and its impact on various industries.</p>
+          <a href="#" class="event-cta mt-4">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+        <div class="event-card reveal" data-type="workshop" style="opacity:0.85;">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="event-date-past">May 25, 2026</div>
+              <span class="event-type-badge badge-workshop mt-1 inline-block">Workshop</span>
+            </div>
+          </div>
+          <h3 class="font-extrabold text-xl text-ink mt-2">Web Development Workshop</h3>
+          <p class="text-muted text-sm leading-relaxed mt-2">Full-day workshop covering modern web development with React, Node.js, and Tailwind CSS.</p>
+          <a href="#" class="event-cta mt-4">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+        <div class="event-card reveal" data-type="competition" style="opacity:0.85;">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="event-date-past">April 15, 2026</div>
+              <span class="event-type-badge badge-competition mt-1 inline-block">Competition</span>
+            </div>
+          </div>
+          <h3 class="font-extrabold text-xl text-ink mt-2">PUCC Hackathon 2026</h3>
+          <p class="text-muted text-sm leading-relaxed mt-2">24-hour hackathon where teams built innovative solutions for real-world problems.</p>
+          <a href="#" class="event-cta mt-4">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+        <div class="event-card reveal" data-type="bootcamp" style="opacity:0.85;">
+          <div class="flex justify-between items-start">
+            <div>
+              <div class="event-date-past">March 5, 2026</div>
+              <span class="event-type-badge badge-bootcamp mt-1 inline-block">Bootcamp</span>
+            </div>
+          </div>
+          <h3 class="font-extrabold text-xl text-ink mt-2">Python Bootcamp</h3>
+          <p class="text-muted text-sm leading-relaxed mt-2">Intensive 3-day bootcamp covering Python programming from basics to advanced concepts.</p>
+          <a href="#" class="event-cta mt-4">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-cloud py-12 border-y border-line">
+    <div class="mx-auto max-w-3xl px-6 text-center">
+      <h3 class="font-extrabold text-xl text-ink mb-4">Event Types</h3>
+      <div class="flex flex-wrap justify-center gap-6 text-sm font-bold text-muted">
+        <span class="flex items-center"><span class="color-dot" style="background:#3525cd;"></span> Competition</span>
+        <span class="flex items-center"><span class="color-dot" style="background:#3B82F6;"></span> Workshop</span>
+        <span class="flex items-center"><span class="color-dot" style="background:#10B981;"></span> Bootcamp</span>
+        <span class="flex items-center"><span class="color-dot" style="background:#F59E0B;"></span> Seminar</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-navy py-sectionMobile text-white md:py-sectionDesktop">
+    <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-cyan to-amber"></div>
+    <div class="reveal mx-auto max-w-4xl px-marginMobile text-center">
+      <span class="material-symbols-outlined text-cyan text-[64px]">add_circle</span>
+      <h2 class="mt-6 font-heading text-4xl font-extrabold leading-tight md:text-6xl">Want to Host an Event?</h2>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/70">Have an idea for a workshop, competition, or seminar? We'd love to hear from you.</p>
+      <div class="mt-10 flex flex-col items-center gap-5">
+        <a class="inline-flex items-center gap-2 rounded-lg bg-white px-9 py-4 font-extrabold text-primary shadow-glow transition hover:-translate-y-1" href="join_us.html">
+          Contact Us
+          <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="bg-[#0b1020] py-16 text-white">
+  <div class="mx-auto grid max-w-containerMax gap-12 px-marginMobile md:grid-cols-4 md:px-gutter">
+    <div>
+      <div class="flex items-center gap-3">
+        <img class="h-12 w-12 object-contain" src="logos/computerclublogo.jpeg" alt="PUCC logo"/>
+        <div>
+          <p class="font-heading text-xl font-extrabold">PUCC</p>
+          <p class="text-sm font-semibold text-white/60">Premier University Computer Club</p>
+        </div>
+      </div>
+      <p class="mt-6 max-w-sm leading-7 text-white/60">Empowering the next generation of technologists through collaboration, competition, and practical learning.</p>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Quick Links</h3>
+      <ul class="mt-5 grid gap-3 text-white/65">
+        <li><a class="transition hover:text-white" href="index.html">Home</a></li>
+        <li><a class="transition hover:text-white" href="about.html">About</a></li>
+        <li><a class="transition hover:text-white" href="wingsPage.html">Wings</a></li>
+        <li><a class="transition hover:text-white" href="event_page.html">Events</a></li>
+        <li><a class="transition hover:text-white" href="achievement.html">Achievements</a></li>
+        <li><a class="transition hover:text-white" href="team_page.html">Team</a></li>
+        <li><a class="transition hover:text-white" href="join_us.html">Join Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Connect</h3>
+      <div class="mt-5 grid gap-4 text-white/65">
+        <p class="flex gap-3"><span class="material-symbols-outlined text-[20px]">mail</span> pucc.official@pu.ac.bd</p>
+        <div class="flex gap-3">
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="Facebook"><span class="material-symbols-outlined">public</span></a>
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="LinkedIn"><span class="material-symbols-outlined">work</span></a>
+          <a class="grid h-11 w-11 place-items-center rounded-lg bg-white/10 transition hover:bg-primary" href="#" aria-label="YouTube"><span class="material-symbols-outlined">smart_display</span></a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-heading font-bold text-cyan">Location</h3>
+      <p class="mt-5 text-white/65 flex gap-3"><span class="material-symbols-outlined text-[20px]">location_on</span> Premier University, Chittagong</p>
+      <p class="mt-4 text-sm font-semibold text-white/50">&copy; 2026 PUCC. All rights reserved.</p>
+      <p class="text-sm font-semibold text-white/50">1 July 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("flex");
+  }
+
+  function filterEvents(type) {
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.querySelector(`.filter-btn[data-filter="${type}"]`);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    document.querySelectorAll('#upcomingGrid .event-card, #pastGrid .event-card').forEach(card => {
+      const cardType = card.getAttribute('data-type');
+      if (type === 'all' || cardType === type) {
+        card.style.display = 'block';
+        setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 10);
+      } else {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => { card.style.display = 'none'; }, 350);
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, { threshold: 0.14 });
+
+  document.querySelectorAll(".reveal").forEach((el, index) => {
+    el.style.transitionDelay = `${Math.min(index % 3, 2) * 90}ms`;
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
