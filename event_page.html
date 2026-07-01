@@ -247,7 +247,7 @@
     margin-right: 0.5rem;
   }
 
-  /* Popup / Modal Styles */
+  /* Modal / Popup Styles */
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -269,7 +269,7 @@
 
   .modal-box {
     background: #ffffff;
-    max-width: 500px;
+    max-width: 520px;
     width: 100%;
     border-radius: 1.25rem;
     padding: 2rem;
@@ -277,7 +277,7 @@
     transform: scale(0.95);
     transition: transform 0.3s ease;
     position: relative;
-    max-height: 90vh;
+    max-height: 92vh;
     overflow-y: auto;
   }
 
@@ -300,6 +300,7 @@
     cursor: pointer;
     color: #111827;
     transition: all 0.2s ease;
+    z-index: 10;
   }
 
   .modal-close:hover {
@@ -314,7 +315,7 @@
   .modal-box h3 {
     font-size: 1.5rem;
     font-weight: 800;
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
   }
 
   .modal-box p {
@@ -326,26 +327,144 @@
   .modal-box .modal-icon {
     font-size: 3rem;
     display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  /* Form inside modal */
+  .modal-form .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .modal-form .form-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #111827;
+    margin-bottom: 0.25rem;
+    letter-spacing: 0.01em;
+  }
+
+  .modal-form .form-label .required {
+    color: #e11d48;
+    margin-left: 2px;
+  }
+
+  .modal-form .form-input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 2px solid #dfe4ee;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    font-family: "Manrope", sans-serif;
+    transition: all 0.3s ease;
+    background: #fafbfc;
+    color: #111827;
+  }
+
+  .modal-form .form-input:focus {
+    outline: none;
+    border-color: #3525cd;
+    box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.08);
+    background: #ffffff;
+  }
+
+  .modal-form .form-input.error {
+    border-color: #e11d48;
+    box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.08);
+  }
+
+  .modal-form .btn-submit-modal {
+    background: #3525cd;
+    color: #ffffff;
+    padding: 0.8rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .modal-form .btn-submit-modal:hover {
+    background: #2b1fa8;
+    box-shadow: 0 8px 40px rgba(108, 99, 255, 0.3);
+  }
+
+  .modal-form .btn-submit-modal .material-symbols-outlined {
+    font-size: 1.1rem;
+  }
+
+  .modal-form .form-success {
+    display: none;
+    text-align: center;
+    padding: 1.5rem 1rem;
+  }
+
+  .modal-form .form-success.show {
+    display: block;
+    animation: fadeInUp 0.5s ease forwards;
+  }
+
+  .modal-form .form-success .success-icon {
+    font-size: 3.5rem;
+    color: #10B981;
     margin-bottom: 0.5rem;
   }
 
-  .modal-box .modal-btn {
-    margin-top: 1.5rem;
-    background: #3525cd;
-    color: #fff;
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 0.75rem;
+  .modal-form .form-success h4 {
+    font-size: 1.25rem;
     font-weight: 700;
-    cursor: pointer;
-    transition: background 0.25s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    color: #111827;
+    margin-bottom: 0.25rem;
   }
 
-  .modal-box .modal-btn:hover {
-    background: #2b1fa8;
+  .modal-form .form-success p {
+    color: #5f6472;
+    font-size: 0.9rem;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Gallery modal specific */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .gallery-grid .gallery-item {
+    background: #f1f3f7;
+    border-radius: 0.75rem;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #5f6472;
+    border: 2px dashed #dfe4ee;
+    transition: all 0.2s ease;
+  }
+
+  .gallery-grid .gallery-item:hover {
+    border-color: #3525cd;
+    background: #ebe9ff;
   }
 
   @media (min-width: 768px) {
@@ -388,6 +507,19 @@
     .modal-box {
       padding: 1.5rem;
       margin: 10px;
+    }
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .gallery-grid .gallery-item {
+      font-size: 1.5rem;
     }
   }
 </style>
@@ -475,7 +607,7 @@
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Premier University, Chittagong</span>
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 10:00 AM - 4:00 PM</span>
           </div>
-          <a class="event-cta mt-4" onclick="openModal('register', 'Code Clash 2026')">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openRegisterModal('Code Clash 2026', 'Competition', 'July 15, 2026', 'Premier University, Chittagong')">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
         <div class="event-card reveal" data-type="bootcamp">
           <div class="flex justify-between items-start">
@@ -490,7 +622,7 @@
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Premier University, Chittagong</span>
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 9:00 AM - 5:00 PM</span>
           </div>
-          <a class="event-cta mt-4" onclick="openModal('register', 'AI/ML Bootcamp')">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openRegisterModal('AI/ML Bootcamp', 'Bootcamp', 'July 22, 2026', 'Premier University, Chittagong')">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
         <div class="event-card reveal" data-type="workshop">
           <div class="flex justify-between items-start">
@@ -505,7 +637,7 @@
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Premier University, Chittagong</span>
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 2:00 PM - 6:00 PM</span>
           </div>
-          <a class="event-cta mt-4" onclick="openModal('register', 'Linux Networking Workshop')">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openRegisterModal('Linux Networking Workshop', 'Workshop', 'August 5, 2026', 'Premier University, Chittagong')">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
       </div>
     </div>
@@ -527,7 +659,7 @@
           </div>
           <h3 class="font-extrabold text-xl text-ink mt-2">Future of AI Seminar</h3>
           <p class="text-muted text-sm leading-relaxed mt-2">Expert panel discussion on the future of artificial intelligence and its impact on various industries.</p>
-          <a class="event-cta mt-4" onclick="openModal('gallery', 'Future of AI Seminar')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openGalleryModal('Future of AI Seminar')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
         <div class="event-card reveal" data-type="workshop" style="opacity:0.85;">
           <div class="flex justify-between items-start">
@@ -538,7 +670,7 @@
           </div>
           <h3 class="font-extrabold text-xl text-ink mt-2">Web Development Workshop</h3>
           <p class="text-muted text-sm leading-relaxed mt-2">Full-day workshop covering modern web development with React, Node.js, and Tailwind CSS.</p>
-          <a class="event-cta mt-4" onclick="openModal('gallery', 'Web Development Workshop')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openGalleryModal('Web Development Workshop')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
         <div class="event-card reveal" data-type="competition" style="opacity:0.85;">
           <div class="flex justify-between items-start">
@@ -549,7 +681,7 @@
           </div>
           <h3 class="font-extrabold text-xl text-ink mt-2">PUCC Hackathon 2026</h3>
           <p class="text-muted text-sm leading-relaxed mt-2">24-hour hackathon where teams built innovative solutions for real-world problems.</p>
-          <a class="event-cta mt-4" onclick="openModal('gallery', 'PUCC Hackathon 2026')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openGalleryModal('PUCC Hackathon 2026')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
         <div class="event-card reveal" data-type="bootcamp" style="opacity:0.85;">
           <div class="flex justify-between items-start">
@@ -560,7 +692,7 @@
           </div>
           <h3 class="font-extrabold text-xl text-ink mt-2">Python Bootcamp</h3>
           <p class="text-muted text-sm leading-relaxed mt-2">Intensive 3-day bootcamp covering Python programming from basics to advanced concepts.</p>
-          <a class="event-cta mt-4" onclick="openModal('gallery', 'Python Bootcamp')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openGalleryModal('Python Bootcamp')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
       </div>
     </div>
@@ -594,17 +726,70 @@
   </section>
 </main>
 
-<!-- ========== MODAL / POPUP ========== -->
-<div class="modal-overlay" id="eventModal" onclick="closeModalOutside(event)">
+<!-- ========== REGISTER MODAL ========== -->
+<div class="modal-overlay" id="registerModal" onclick="closeModalOutside(event, 'registerModal')">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()" aria-label="Close modal">
+    <button class="modal-close" onclick="closeModal('registerModal')" aria-label="Close modal">
       <span class="material-symbols-outlined">close</span>
     </button>
-    <span class="modal-icon" id="modalIcon">🎉</span>
-    <h3 id="modalTitle">Event</h3>
-    <p id="modalDesc">Loading...</p>
-    <button class="modal-btn" id="modalActionBtn" onclick="closeModal()">
-      <span class="material-symbols-outlined">check_circle</span> Got it
+    <span class="modal-icon">📝</span>
+    <h3 id="registerModalTitle">Register for Event</h3>
+    <div id="registerEventDetails" class="text-sm text-muted mt-1 space-y-1">
+      <p><span class="font-semibold text-ink">Type:</span> <span id="regEventType">-</span></p>
+      <p><span class="font-semibold text-ink">Date:</span> <span id="regEventDate">-</span></p>
+      <p><span class="font-semibold text-ink">Location:</span> <span id="regEventLocation">-</span></p>
+    </div>
+    <hr class="my-4 border-line"/>
+    <form class="modal-form" id="registerForm" onsubmit="handleRegistration(event)">
+      <div class="form-group">
+        <label class="form-label" for="regName">Full Name <span class="required">*</span></label>
+        <input class="form-input" id="regName" placeholder="Enter your full name" required type="text"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="regEmail">Email Address <span class="required">*</span></label>
+        <input class="form-input" id="regEmail" placeholder="your@email.com" required type="email"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="regPhone">Phone Number <span class="required">*</span></label>
+        <input class="form-input" id="regPhone" placeholder="Enter your phone number" required type="tel"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="regUniversity">University/Institution <span class="required">*</span></label>
+        <input class="form-input" id="regUniversity" placeholder="Your university name" required type="text"/>
+      </div>
+      <button class="btn-submit-modal" type="submit">
+        Complete Registration
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+      <div class="form-success" id="registerSuccess">
+        <div class="success-icon">✅</div>
+        <h4>Registration Successful!</h4>
+        <p>You have successfully registered for the event. We'll send you the details via email.</p>
+        <button type="button" class="mt-4 px-6 py-2 rounded-lg bg-primary text-white font-bold transition hover:bg-primaryDark" onclick="closeModal('registerModal')">Done</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ========== GALLERY MODAL ========== -->
+<div class="modal-overlay" id="galleryModal" onclick="closeModalOutside(event, 'galleryModal')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('galleryModal')" aria-label="Close modal">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <span class="modal-icon">🖼️</span>
+    <h3 id="galleryModalTitle">Gallery</h3>
+    <p id="galleryModalDesc" class="text-muted">Event photos and highlights</p>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item">📸</div>
+      <div class="gallery-item">🎥</div>
+      <div class="gallery-item">🏆</div>
+      <div class="gallery-item">👥</div>
+      <div class="gallery-item">💻</div>
+      <div class="gallery-item">🎯</div>
+    </div>
+    <button class="modal-btn mt-4" onclick="closeModal('galleryModal')" style="background:#3525cd;color:#fff;border:none;padding:0.75rem 2rem;border-radius:0.75rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;width:100%;justify-content:center;">
+      <span class="material-symbols-outlined">check_circle</span> Close Gallery
     </button>
   </div>
 </div>
@@ -679,49 +864,120 @@
     });
   }
 
-  // ----- MODAL / POPUP FUNCTIONS -----
-  function openModal(type, eventName) {
-    const modal = document.getElementById('eventModal');
-    const icon = document.getElementById('modalIcon');
-    const title = document.getElementById('modalTitle');
-    const desc = document.getElementById('modalDesc');
-    const btn = document.getElementById('modalActionBtn');
+  // ----- REGISTER MODAL -----
+  function openRegisterModal(eventName, eventType, eventDate, eventLocation) {
+    document.getElementById('registerModalTitle').textContent = 'Register for ' + eventName;
+    document.getElementById('regEventType').textContent = eventType;
+    document.getElementById('regEventDate').textContent = eventDate;
+    document.getElementById('regEventLocation').textContent = eventLocation;
 
-    if (type === 'register') {
-      icon.textContent = '📝';
-      title.textContent = 'Register for ' + eventName;
-      desc.textContent = 'You are about to register for "' + eventName + '". Please confirm your attendance. We will send you the details via email.';
-      btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Confirm Registration';
-    } else if (type === 'gallery') {
-      icon.textContent = '🖼️';
-      title.textContent = 'Gallery: ' + eventName;
-      desc.textContent = 'Check out photos and highlights from "' + eventName + '". Our team captured some amazing moments. Stay tuned for the full album!';
-      btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> View Gallery';
-    }
+    // Reset form
+    const form = document.getElementById('registerForm');
+    form.reset();
+    document.getElementById('registerSuccess').classList.remove('show');
+    form.querySelectorAll('.form-input').forEach(el => el.classList.remove('error'));
+    form.querySelector('.btn-submit-modal').style.display = 'flex';
+    form.querySelectorAll('.form-group').forEach(el => el.style.display = '');
 
-    // Show modal with animation
+    const modal = document.getElementById('registerModal');
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
-  function closeModal() {
-    const modal = document.getElementById('eventModal');
+  function handleRegistration(event) {
+    event.preventDefault();
+    const form = document.getElementById('registerForm');
+    const inputs = form.querySelectorAll('.form-input');
+    let isValid = true;
+
+    inputs.forEach(input => {
+      if (input.hasAttribute('required') && !input.value.trim()) {
+        input.classList.add('error');
+        isValid = false;
+      } else {
+        input.classList.remove('error');
+      }
+    });
+
+    const email = document.getElementById('regEmail');
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.value && !emailPattern.test(email.value)) {
+      email.classList.add('error');
+      isValid = false;
+    }
+
+    const phone = document.getElementById('regPhone');
+    if (phone.value && phone.value.length < 10) {
+      phone.classList.add('error');
+      isValid = false;
+    }
+
+    if (!isValid) {
+      const firstError = form.querySelector('.error');
+      if (firstError) {
+        firstError.focus();
+        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
+    // Show success
+    document.getElementById('registerSuccess').classList.add('show');
+    form.querySelector('.btn-submit-modal').style.display = 'none';
+    form.querySelectorAll('.form-group').forEach(el => {
+      el.style.display = 'none';
+    });
+
+    // Log registration data
+    console.log('Registration:', {
+      name: document.getElementById('regName').value,
+      email: document.getElementById('regEmail').value,
+      phone: document.getElementById('regPhone').value,
+      university: document.getElementById('regUniversity').value,
+      event: document.getElementById('registerModalTitle').textContent.replace('Register for ', '')
+    });
+  }
+
+  // ----- GALLERY MODAL -----
+  function openGalleryModal(eventName) {
+    document.getElementById('galleryModalTitle').textContent = 'Gallery: ' + eventName;
+    document.getElementById('galleryModalDesc').textContent = 'Photos and highlights from "' + eventName + '"';
+
+    const modal = document.getElementById('galleryModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // ----- CLOSE MODALS -----
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
     modal.classList.remove('active');
     document.body.style.overflow = '';
   }
 
-  // Close modal when clicking outside the box
-  function closeModalOutside(event) {
+  function closeModalOutside(event, modalId) {
     if (event.target === event.currentTarget) {
-      closeModal();
+      closeModal(modalId);
     }
   }
 
-  // Close modal with Escape key
+  // Close modals with Escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      closeModal();
+      if (document.getElementById('registerModal').classList.contains('active')) {
+        closeModal('registerModal');
+      }
+      if (document.getElementById('galleryModal').classList.contains('active')) {
+        closeModal('galleryModal');
+      }
     }
+  });
+
+  // Remove error state on input
+  document.querySelectorAll('.form-input').forEach(input => {
+    input.addEventListener('input', function() {
+      this.classList.remove('error');
+    });
   });
 
   // ----- REVEAL OBSERVER -----
