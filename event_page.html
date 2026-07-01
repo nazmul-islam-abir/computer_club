@@ -99,6 +99,13 @@
       linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #edf7ff 100%);
   }
 
+  .gradient-text {
+    background: linear-gradient(90deg, #3525cd, #06b6d4, #14b8a6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(28px);
@@ -202,6 +209,7 @@
     gap: 0.25rem;
     transition: gap 0.25s ease;
     text-decoration: none;
+    cursor: pointer;
   }
 
   .event-cta:hover {
@@ -237,6 +245,107 @@
     height: 12px;
     border-radius: 50%;
     margin-right: 0.5rem;
+  }
+
+  /* Popup / Modal Styles */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .modal-box {
+    background: #ffffff;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 1.25rem;
+    padding: 2rem;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.active .modal-box {
+    transform: scale(1);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #f1f3f7;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #111827;
+    transition: all 0.2s ease;
+  }
+
+  .modal-close:hover {
+    background: #e11d48;
+    color: #fff;
+  }
+
+  .modal-close .material-symbols-outlined {
+    font-size: 1.5rem;
+  }
+
+  .modal-box h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-top: 0.5rem;
+  }
+
+  .modal-box p {
+    color: #5f6472;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .modal-box .modal-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-box .modal-btn {
+    margin-top: 1.5rem;
+    background: #3525cd;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .modal-box .modal-btn:hover {
+    background: #2b1fa8;
   }
 
   @media (min-width: 768px) {
@@ -275,6 +384,10 @@
     }
     .filter-scroll {
       justify-content: flex-start;
+    }
+    .modal-box {
+      padding: 1.5rem;
+      margin: 10px;
     }
   }
 </style>
@@ -362,7 +475,7 @@
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Premier University, Chittagong</span>
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 10:00 AM - 4:00 PM</span>
           </div>
-          <a href="#" class="event-cta mt-4">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openModal('register', 'Code Clash 2026')">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
         <div class="event-card reveal" data-type="bootcamp">
           <div class="flex justify-between items-start">
@@ -377,7 +490,7 @@
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Premier University, Chittagong</span>
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 9:00 AM - 5:00 PM</span>
           </div>
-          <a href="#" class="event-cta mt-4">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openModal('register', 'AI/ML Bootcamp')">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
         <div class="event-card reveal" data-type="workshop">
           <div class="flex justify-between items-start">
@@ -392,7 +505,7 @@
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Premier University, Chittagong</span>
             <span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">schedule</span> 2:00 PM - 6:00 PM</span>
           </div>
-          <a href="#" class="event-cta mt-4">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openModal('register', 'Linux Networking Workshop')">Register Now <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
       </div>
     </div>
@@ -414,7 +527,7 @@
           </div>
           <h3 class="font-extrabold text-xl text-ink mt-2">Future of AI Seminar</h3>
           <p class="text-muted text-sm leading-relaxed mt-2">Expert panel discussion on the future of artificial intelligence and its impact on various industries.</p>
-          <a href="#" class="event-cta mt-4">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openModal('gallery', 'Future of AI Seminar')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
         <div class="event-card reveal" data-type="workshop" style="opacity:0.85;">
           <div class="flex justify-between items-start">
@@ -425,7 +538,7 @@
           </div>
           <h3 class="font-extrabold text-xl text-ink mt-2">Web Development Workshop</h3>
           <p class="text-muted text-sm leading-relaxed mt-2">Full-day workshop covering modern web development with React, Node.js, and Tailwind CSS.</p>
-          <a href="#" class="event-cta mt-4">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openModal('gallery', 'Web Development Workshop')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
         <div class="event-card reveal" data-type="competition" style="opacity:0.85;">
           <div class="flex justify-between items-start">
@@ -436,7 +549,7 @@
           </div>
           <h3 class="font-extrabold text-xl text-ink mt-2">PUCC Hackathon 2026</h3>
           <p class="text-muted text-sm leading-relaxed mt-2">24-hour hackathon where teams built innovative solutions for real-world problems.</p>
-          <a href="#" class="event-cta mt-4">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openModal('gallery', 'PUCC Hackathon 2026')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
         <div class="event-card reveal" data-type="bootcamp" style="opacity:0.85;">
           <div class="flex justify-between items-start">
@@ -447,7 +560,7 @@
           </div>
           <h3 class="font-extrabold text-xl text-ink mt-2">Python Bootcamp</h3>
           <p class="text-muted text-sm leading-relaxed mt-2">Intensive 3-day bootcamp covering Python programming from basics to advanced concepts.</p>
-          <a href="#" class="event-cta mt-4">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
+          <a class="event-cta mt-4" onclick="openModal('gallery', 'Python Bootcamp')">View Gallery <span class="material-symbols-outlined">arrow_forward</span></a>
         </div>
       </div>
     </div>
@@ -480,6 +593,21 @@
     </div>
   </section>
 </main>
+
+<!-- ========== MODAL / POPUP ========== -->
+<div class="modal-overlay" id="eventModal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close modal">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <span class="modal-icon" id="modalIcon">🎉</span>
+    <h3 id="modalTitle">Event</h3>
+    <p id="modalDesc">Loading...</p>
+    <button class="modal-btn" id="modalActionBtn" onclick="closeModal()">
+      <span class="material-symbols-outlined">check_circle</span> Got it
+    </button>
+  </div>
+</div>
 
 <!-- ========== FOOTER ========== -->
 <footer class="bg-[#0b1020] py-16 text-white">
@@ -551,6 +679,52 @@
     });
   }
 
+  // ----- MODAL / POPUP FUNCTIONS -----
+  function openModal(type, eventName) {
+    const modal = document.getElementById('eventModal');
+    const icon = document.getElementById('modalIcon');
+    const title = document.getElementById('modalTitle');
+    const desc = document.getElementById('modalDesc');
+    const btn = document.getElementById('modalActionBtn');
+
+    if (type === 'register') {
+      icon.textContent = '📝';
+      title.textContent = 'Register for ' + eventName;
+      desc.textContent = 'You are about to register for "' + eventName + '". Please confirm your attendance. We will send you the details via email.';
+      btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Confirm Registration';
+    } else if (type === 'gallery') {
+      icon.textContent = '🖼️';
+      title.textContent = 'Gallery: ' + eventName;
+      desc.textContent = 'Check out photos and highlights from "' + eventName + '". Our team captured some amazing moments. Stay tuned for the full album!';
+      btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> View Gallery';
+    }
+
+    // Show modal with animation
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('eventModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close modal when clicking outside the box
+  function closeModalOutside(event) {
+    if (event.target === event.currentTarget) {
+      closeModal();
+    }
+  }
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  // ----- REVEAL OBSERVER -----
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
