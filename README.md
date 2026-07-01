@@ -19,7 +19,7 @@ The website showcases the club's mission, vision, wings, events, achievements, t
 | Platform | Link |
 |----------|------|
 | **Cloudflare Pages** | [https://computer-club1.pages.dev/](https://computer-club1.pages.dev/) |
-| **GitHub Pages** | [https://yourusername.github.io/pucc-website/](https://yourusername.github.io/pucc-website/) |
+| **GitHub Pages** | [https://github.com/nazmul-islam-abir/computer_club](https://yourusername.github.io/pucc-website/) |
 
 ---
 
